@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:9001/ # Connection URL
+      fail-fast: true # Don't fail at first call more or less
+      retry:
+        initial-interval: 2000 # retry interval
+        max-attempts: 10 # maxima cantidad de intentos para terminar la conexion
+      profile: dev # perfil a utilizar
+  application:
+    name: items # Nombre de la aplicación
+  config:
+    import: configserver:http://localhost:9001/ # Configuracion de spring boot para referirse al config server
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh # Activar el endpoint de refresh. De esta forma podemos volver a realizar peticiones al server de configuracion
