@@ -12,6 +12,13 @@ spring:
   config:
     import: configserver:http://localhost:9001/ # Configuracion de spring boot para referirse al config server
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_SERVER:localhost}:${EUREKA_PORT:9000}/eureka/
+  instance:
+    preferIpAddress: true
+
 management:
   endpoints:
     web:
