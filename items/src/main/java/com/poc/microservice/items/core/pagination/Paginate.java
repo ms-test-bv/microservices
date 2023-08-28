@@ -62,7 +62,8 @@ public class Paginate {
     }
 
     public static <T> Specification<T> specification(List<Filter> filters, Boolean and) {
-        return new Specification<>() {
+        return new Specification<T>() {
+
             @Override
             public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
                 List<Predicate> predicateList = new ArrayList<>();

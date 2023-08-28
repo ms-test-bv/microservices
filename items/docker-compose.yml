@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  items-service:
+    container_name: items-service
+    image: items-service:0.1.0
+    build:
+      context: .
+    ports:
+    - 8083:8081
+    labels:
+      collect_logs_with_filebeat: "true" # Estos dos labels serán usados por filebeat para acceder al contenedor.
+      decode_log_event_to_json_object: "true"
